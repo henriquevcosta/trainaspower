@@ -14,6 +14,7 @@ finalsurge_session = requests.Session()
 
 user_key = "NOT LOGGED IN"
 
+CONVERSION_DESCRIPTION_TAG = "By TrainAsPower"
 
 def login(email: str, password: str) -> None:
     login_params = {
@@ -40,13 +41,31 @@ def login(email: str, password: str) -> None:
 
 def convert_workout(workout: models.Workout) -> dict:
     counter = count(1)
+    try:
+        steps = workout.steps or []
+    except AttributeError:
+        steps = []
+
+    target = "pace"
+    if steps:
+        first_step = steps[0]
+        try:
+            if first_step.power_range:
+                target = "power"
+            elif first_step.pace_range:
+                target = "pace"
+            elif first_step.hr_zone:
+                target = "hr"
+        except AttributeError:
+            target = "pace"
+
     result = {
         "target_options": [
             {
                 "name": workout.name,
                 "sport": "running",
-                "steps": [convert_step(s, counter) for s in workout.steps],
-                "target": "power" if workout.steps[0].power_range else "pace",
+                "steps": [convert_step(s, counter) for s in steps],
+                "target": target,
             }
         ],
         "target_override": None,
@@ -110,6 +129,16 @@ def convert_step(step: models.Step, id_counter) -> dict:
             "targetIsTimeBased": False,
             "zone": 0,
         }
+    elif step.hr_zone:
+        target_base = {
+            "targetType": "hr_zone",
+            "zoneBased": True,
+            "targetLow": None,
+            "targetHigh": None,
+            "targetOption": None,
+            "targetIsTimeBased": False,
+            "zone": step.hr_zone.zone,
+        }
     else:
         target_base = target_open
 
@@ -160,7 +189,7 @@ def get_existing_tap_workout(wo_date: date) -> Optional[str]:
     for existing_workout in data["data"]:
         if existing_workout["workout_completion"] == 1:
             continue
-        if "TrainAsPower" in (existing_workout["description"] or ""):
+        if CONVERSION_DESCRIPTION_TAG in (existing_workout["description"] or ""):
             return existing_workout["key"]
     return None
 
@@ -174,6 +203,9 @@ def add_workout(workout: models.Workout) -> None:
     wo = convert_workout(workout)
     params = {"scope": "USER", "scope_key": user_key}
 
+    description = workout.description + "\n\n" if workout.description else ""
+    description = f"{description}{CONVERSION_DESCRIPTION_TAG}"
+
     add_wo = finalsurge_session.post(
         "https://beta.finalsurge.com/api/WorkoutSave",
         params=params,
@@ -182,28 +214,30 @@ def add_workout(workout: models.Workout) -> None:
             "workout_date": workout.date.isoformat(),
             "order": 1,
             "name": workout.name,
-            "description": "TrainAsPower converted workout",
+            "description": description,
             "is_race": False,
             "Activity": {
-                "activity_type_key": "00000001-0001-0001-0001-000000000001",
-                "activity_type_name": "Run",
-                "planned_amount": workout.distance.magnitude,
-                "planned_amount_type": f"{workout.distance.units:~}",
-                "planned_duration": round(workout.duration.to("seconds").magnitude),
+                "activity_type_key": convert_activity_type(workout.type),
+                "activity_type_name": workout.type,
+                "planned_amount": workout.distance.magnitude if workout.distance else None,
+                "planned_amount_type": f"{workout.distance.units:~}" if workout.distance else None,
+                "planned_duration": round(workout.duration.to("seconds").magnitude) if workout.duration else None,
             },
         }).encode("utf-8"),
         headers={'Content-Type': 'application/json; charset=UTF-8'},
     )
     if not wo_key:
         wo_key = add_wo.json()["new_workout_key"]
-    params = {
-        "scope": "USER",
-        "scopekey": user_key,
-        "workout_key": wo_key,
-    }
-    finalsurge_session.post(
-        "https://beta.finalsurge.com/api/WorkoutBuilderSave", params=params, json=wo
-    )
+
+    if workout.type != "Strength Training":
+        params = {
+            "scope": "USER",
+            "scopekey": user_key,
+            "workout_key": wo_key,
+        }
+        finalsurge_session.post(
+            "https://beta.finalsurge.com/api/WorkoutBuilderSave", params=params, json=wo
+        )
 
 
 def remove_workout(wo_date: date) -> None:
@@ -219,3 +253,14 @@ def remove_workout(wo_date: date) -> None:
     response = finalsurge_session.get(
         "https://beta.finalsurge.com/api/WorkoutDelete", params=params
     )
+    logger.debug(f"Deletion response: {response.json()}")
+
+
+def convert_activity_type(type: str) -> str:
+    match type.lower():
+        case "run":
+            return "00000001-0001-0001-0001-000000000001"
+        case "strength training":
+            return "00000005-0005-0005-0005-000000000005"
+        case _:
+            raise ValueError(f"Unknown activity type: {type}")

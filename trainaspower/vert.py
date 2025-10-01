@@ -1,4 +1,5 @@
 import datetime
+from math import log
 import re
 from collections.abc import Generator
 from itertools import compress
@@ -7,147 +8,97 @@ import dateparser
 import requests_html
 from fitparse import FitFile
 from loguru import logger
-
+import json
 from . import models
-from .stryd import (
-    convert_pace_range_to_power,
-    get_critical_power,
-    suggested_power_range_for_distance,
-    suggested_power_range_for_time,
-)
 
-tao_session = requests_html.HTMLSession()
+# session = requests_html.HTMLSession()
 
 
-class FindWorkoutException(Exception):
-    def __init__(self, message, filename, html):
-        super().__init__(message)
-        self.message = message
-        self.html = html
-        self.filename = filename
+# def login(email, password) -> None:
+#     r = tao_session.post(
+#         "https://beta.trainasone.com/login",
+#         data={"email": email, "password": password},
+#         allow_redirects=False,
+#     )
+#     if not r.is_redirect:
+#         raise Exception("Failed to login to Train as One")
 
+# Vert has what seems to be difficulty levels in workouts (0-2), we're taking the middle
+ARRAY_INDEX=1
 
-def login(email, password) -> None:
-    r = tao_session.post(
-        "https://beta.trainasone.com/login",
-        data={"email": email, "password": password},
-        allow_redirects=False,
-    )
-    if not r.is_redirect:
-        raise Exception("Failed to login to Train as One")
+LANGUAGE="en"
 
-
-def get_next_workouts(config) -> Generator[models.Workout, None, None]:
-    logger.info("Fetching next TrainAsOne workout.")
-    r = tao_session.get("https://beta.trainasone.com/calendarView")
-    found = False
-    try:
-        upcoming = r.html.find(".today, .future")
-        for day in upcoming:
-            if day.find(".workout"):
-                date = dateparser.parse(
-                    day.find(".title", first=True).text.splitlines()[-1]
-                )
-                workout_url = day.find(".workout a", first=True).absolute_links.pop()
-                yield get_workout(workout_url, date, config)
-                found = True
-        if not found:
-            raise Exception("Next tao workout not found.")
-    except Exception as exc:
-        raise FindWorkoutException(
-            f"Error finding next TaO workout: {exc.args[0]}", "taocalendar.html", r.text
-        ) from exc
-
-
-def decode_cloudflare_email(encoded_email):
+def get_next_workouts(config: models.Config) -> Generator[models.Workout, None, None]:
     """
-    The workout id gets protected as if it was an email address by cloudflare. :eyeroll:
+    Not redy for the online processing just yet
     """
-    decoded = ""
-    chunks = [encoded_email[i : i + 2] for i in range(0, len(encoded_email), 2)]
-    k = int(chunks[0], 16)
 
-    for chunk in chunks[1:]:
-        decoded += chr(int(chunk, 16) ^ k)
+    logger.info("Fetching next Vert.run workouts.")
+    if config.vert_file:
+        # Load JSON
+        with open(config.vert_file, "r", encoding="utf-8") as file:
+            full_plan = json.load(file)
+    else:
+        # something something full_plan = json.loads(...)
+        raise Exception("Vert online fetching not supported yet")
 
-    return decoded
+    days = full_plan["days"]
+    for day_raw in days:
+        # I have never observed a day that wasn't a list of size 1
+        day = day_raw[0]
+        planned_date = day["plannedDate"]
+        logger.info(f"Processing {planned_date}")
+        date = dateparser.parse(planned_date, date_formats=["%d/%m/%Y"])
+        if date.date() < datetime.date.today():
+            logger.info("Skipping past activity")
+            continue
+
+        parameterized_workout = day["parametrizedWorkout"][ARRAY_INDEX]
+        if not parameterized_workout:
+            logger.info("Rest day")
+            continue
+
+        title = day["title"][LANGUAGE]
+        description = day["description"][LANGUAGE]
+        estimated_time_minutes = day["estimatedTime"][ARRAY_INDEX]
+
+        conditioning = []
+        other_steps = []
+        for step in parameterized_workout:
+            if step.get("action", "") == "Conditioning training":
+                conditioning.append(step)
+            else:
+                other_steps.append(step)
 
 
-def fit_to_dict(records: dict) -> dict:
-    return {r["name"]: r["value"] for r in records["fields"]}
+        # In mixed workouts the conditioning steps are mixed in with the run steps, and each is a separate workout garmin-wise
+        for step in conditioning:
+            w = models.Workout()
 
+            w.date = date
+            # TODO change to enum
+            w.type = "Strength Training"
+            w.name = title
+            w.description = description
+            if step.get("variable","") == "Time":
+                duration = datetime.datetime.strptime(step["value"],  "%Hh:%Mm:%Ss")
+                w.duration = duration.hour * models.hour + duration.minute * models.minute + duration.second * models.second
 
-def fit_get_workout_name(fit_file: FitFile) -> str:
-    return next(
-        filter(
-            lambda x: x["name"] == "wkt_name",
-            next(fit_file.get_messages("workout", as_dict=True))["fields"],
-        ),
-    )["value"]
+            yield w
 
+        if other_steps:
+            w = models.Workout()
+            w.date = date
+            # TODO change to enum
+            w.type = "Run"
+            w.name = title
+            w.description = description
 
-def fit_get_workout_steps(fit_file: FitFile) -> list[dict]:
-    steps = [
-        fit_to_dict(step)
-        for step in fit_file.get_messages("workout_step", as_dict=True)
-    ]
-    steps.sort(key=lambda x: x["message_index"])
-    return steps
-
-
-def get_workout(
-    workout_url: str,
-    date: datetime.date,
-    config: models.Config,
-) -> models.Workout:
-    workout_id = re.search(r"workoutId=([^&]+)", workout_url).group(1)
-    workout_download_url = "https://beta.trainasone.com/plannedWorkoutDownload"
-    r = tao_session.post(
-        workout_download_url,
-        data={
-            "workoutId": workout_id,
-            "temperature": "",
-            "undulation": "",
-            "sourceFormat": "FIT",
-            "includeRunBackStep": config.include_runback_step,
-            "_includeRunBackStep": "on",
-            "workoutStepEnd": "DURATION",
-            "workoutStepName": "STEP_NAME",
-            "workoutSlowStepTarget": "SPEED",
-            "workoutEasyStepTarget": "SPEED",
-            "workoutFastStepTarget": "SPEED",
-        },
-    )
-
-    fit_file = FitFile(r.content)
-    workout_name = fit_get_workout_name(fit_file)
-    workout_steps = fit_get_workout_steps(fit_file)
-
-    r_base = tao_session.get(workout_url)
-    w = models.Workout()
-    w.date = date
-    # TODO set enum
-    w.type = "Run"
-
-    try:
-        # Fetch the duration and distance from TAO
-        workout_html = r_base.html
-        w.duration = parse_duration(workout_html.find(".detail>span", first=True).text)
-        w.distance = parse_distance(workout_html.find(".detail", first=True).text)
-
-        steps = workout_steps
-        title = workout_name
-        number, name = title.split(" ", maxsplit=1)
-        w.id = number
-        w.name = title
-
-        logger.info("Converting TrainAsOne workout to power.")
-        w.steps = convert_steps(steps, config, "Perceived Effort" in name)
-        return w
-    except Exception as exc:
-        raise FindWorkoutException(
-            f"Error finding workout steps: {exc.args}", "taoworkout.html", r.text
-        ) from exc
+            logger.warning("Not yielding workouts yet!")
+            # yield w
+        found = True
+    if not found:
+        raise Exception("No workouts found.")
 
 
 def convert_step_type(step: dict) -> str:

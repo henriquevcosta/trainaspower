@@ -5,21 +5,24 @@ from typing import List, NamedTuple, Union, Tuple, Any, Optional
 
 from loguru import logger
 from pint import UnitRegistry, Quantity
+
 from pydantic import BaseModel, Field, validator
 
 ureg = UnitRegistry()
 mile = ureg.mile
 kilometer = ureg.kilometer
 meter = ureg.meter
+hour = ureg.hour
 second = ureg.second
 minute = ureg.minute
 
 
 class Config(BaseModel):
-    stryd_email: str
-    stryd_password: str
-    trainasone_email: str
-    trainasone_password: str
+    stryd_email: Optional[str]
+    stryd_password: Optional[str]
+    trainasone_email: Optional[str]
+    trainasone_password: Optional[str]
+    vert_file: Optional[str]
     finalsurge_email: str
     finalsurge_password: str
     power_adjust: Tuple[Union[float, int], Union[float, int]] = (0, 0)
@@ -70,14 +73,32 @@ class PaceRange(NamedTuple):
     max: Quantity
 
 
+class HRZone(NamedTuple):
+    zone: Quantity
+
+
 class Workout:
     name: str
     description: str
-    steps: List["Step"]
+    steps: Optional[List["Step"]] = None
     date: datetime.date
+    type: str
     id: str
-    duration: Quantity
-    distance: Quantity
+    duration: Optional[Quantity] = None
+    distance: Optional[Quantity] = None
+
+    def __repr__(self) -> str:
+        attrs = [
+            f"name={getattr(self, 'name', None)!r}",
+            f"description={getattr(self, 'description', None)!r}",
+            f"date={getattr(self, 'date', None)!r}",
+            f"type={getattr(self, 'type', None)!r}",
+            f"id={getattr(self, 'id', None)!r}",
+            f"duration={getattr(self, 'duration', None)!r}",
+            f"distance={getattr(self, 'distance', None)!r}",
+            f"steps={getattr(self, 'steps', None)!r}",
+        ]
+        return f"Workout({', '.join(attrs)})"
 
 
 class Step:
@@ -88,6 +109,7 @@ class Step:
 class ConcreteStep(Step):
     power_range: PowerRange
     pace_range: PaceRange
+    hr_zone: HRZone
     length: Optional[Quantity]
 
 

@@ -8,13 +8,14 @@ import yaml
 from loguru import logger
 from pydantic import ValidationError
 
-import trainaspower
-from trainaspower import finalsurge, models, stryd, trainasone
+from trainaspower import finalsurge, models, stryd, trainasone, vert
 
 if getattr(sys, "frozen", False):
     directory = Path(sys.executable).parent
 else:
-    directory = Path(trainaspower.__file__).parent.parent
+    # TODO fix
+    # directory = Path(trainaspower.__file__).parent.parent
+    directory = Path(__file__).parent.parent
 
 
 def setup_logging():
@@ -80,14 +81,21 @@ def main():
     finally:
         args.config_file.close()
 
-    trainasone.login(config.trainasone_email, config.trainasone_password)
     finalsurge.login(config.finalsurge_email, config.finalsurge_password)
-    stryd.login(config.stryd_email, config.stryd_password)
     start_date = datetime.date.today()
+
     try:
+        if config.trainasone_email:
+            trainasone.login(config.trainasone_email, config.trainasone_password)
+            stryd.login(config.stryd_email, config.stryd_password)
+            workouts = trainasone.get_next_workouts(config)
+        elif config.vert_file:
+            workouts = vert.get_next_workouts(config)
         for wo in islice(
-            trainasone.get_next_workouts(config), config.number_of_workouts
+            workouts, config.number_of_workouts
         ):
+
+            logger.debug(wo)
             # Clear any cancelled workouts
             for wo_date in daterange(start_date, wo.date):
                 finalsurge.remove_workout(wo_date)
@@ -95,11 +103,12 @@ def main():
             finalsurge.add_workout(wo)
             start_date = wo.date + datetime.timedelta(1)
     except trainasone.FindWorkoutException as exc:
+        # TODO make more generic
         with open(directory / exc.filename, "w", encoding="utf-8") as f:
             f.write(exc.html)
         logger.opt(exception=True).debug("Error")
         logger.error(
-            f"Could not load next Train as One workout. Created {exc.filename} for debugging."
+            f"Could not load next workout. Created {exc.filename} for debugging."
         )
         sys.exit(1)
 
