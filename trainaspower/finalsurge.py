@@ -172,7 +172,7 @@ def convert_repeat(step: models.RepeatStep, id_counter) -> dict:
     }
 
 
-def get_existing_tap_workout(wo_date: date) -> Optional[str]:
+def get_existing_tap_workout(wo_date: date, wo_type: str = None) -> Optional[str]:
     """Checks if TrainAsPower already has an (uncompleted) workout on the same day as given workout."""
     logger.debug(f"Checking TrainAsPower workout exists on Final Surge")
     params = {
@@ -190,12 +190,22 @@ def get_existing_tap_workout(wo_date: date) -> Optional[str]:
         if existing_workout["workout_completion"] == 1:
             continue
         if CONVERSION_DESCRIPTION_TAG in (existing_workout["description"] or ""):
-            return existing_workout["key"]
+            if wo_type:
+                if "Activities" in existing_workout \
+                  and existing_workout["Activities"] \
+                  and existing_workout["Activities"][0]["activity_type_key"] == convert_activity_type(wo_type):
+                    return existing_workout["key"]
+
+                else:
+                    # We're filtering for a type and the workout doesn't have one
+                    continue
+            else:
+                return existing_workout["key"]
     return None
 
 
 def add_workout(workout: models.Workout) -> None:
-    wo_key = get_existing_tap_workout(workout.date)
+    wo_key = get_existing_tap_workout(workout.date, workout.type)
     if wo_key:
         logger.info(f"Updating workout `{workout.name}` on Final Surge")
     else:
@@ -262,5 +272,7 @@ def convert_activity_type(type: str) -> str:
             return "00000001-0001-0001-0001-000000000001"
         case "strength training":
             return "00000005-0005-0005-0005-000000000005"
+        case "cross training":
+            return "00000004-0004-0004-0004-000000000004"
         case _:
             raise ValueError(f"Unknown activity type: {type}")

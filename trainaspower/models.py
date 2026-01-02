@@ -28,6 +28,8 @@ class Config(BaseModel):
     power_adjust: Tuple[Union[float, int], Union[float, int]] = (0, 0)
     number_of_workouts: int = 1
     include_runback_step: bool = False
+    # TODO implement
+    set_hr_zone: bool = False
     pace_only: bool = False
     # Old config values
     recovery_pace_adjust: Any = Field(removed='Field `power_adjust` has been added instead')
@@ -103,14 +105,15 @@ class Workout:
 
 class Step:
     description: str
+    comments: str
     type: str
 
 
 class ConcreteStep(Step):
-    power_range: PowerRange
-    pace_range: PaceRange
-    hr_zone: HRZone
-    length: Optional[Quantity]
+    power_range: Optional[PowerRange] = None
+    pace_range: Optional[PaceRange] = None
+    hr_zone: Optional[HRZone] = None
+    length: Optional[Quantity] = None
 
 
 class RepeatStep(Step):
