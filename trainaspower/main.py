@@ -9,6 +9,7 @@ from loguru import logger
 from pydantic import ValidationError
 
 from trainaspower import finalsurge, models, stryd, trainasone, vert
+from trainaspower.streek import StreekWorkoutLoader
 
 if getattr(sys, "frozen", False):
     directory = Path(sys.executable).parent
@@ -91,11 +92,14 @@ def main():
             workouts = trainasone.get_next_workouts(config)
         elif config.vert_file:
             workouts = vert.get_next_workouts(config)
+        elif config.streek_folder:
+            streek_loader = StreekWorkoutLoader(config.streek_folder,datetime.date.fromisoformat(config.streek_startdate), config.streek_plan_base_url)
+            workouts = streek_loader.get_next_workouts(config)
         for wo in islice(
             workouts, config.number_of_workouts
         ):
 
-            logger.debug(wo)
+            logger.warning(wo)
             # Clear any cancelled workouts
             for wo_date in daterange(start_date, wo.date):
                 finalsurge.remove_workout(wo_date)

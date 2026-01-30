@@ -9,4 +9,6 @@ config.yaml
 # Generated files
 *.log
 taocalendar.html
+__pycache__/data
 __pycache__
+*.json

@@ -23,6 +23,9 @@ class Config(BaseModel):
     trainasone_email: Optional[str]
     trainasone_password: Optional[str]
     vert_file: Optional[str]
+    streek_folder: Optional[str]
+    streek_startdate: Optional[str]
+    streek_plan_base_url: Optional[str]
     finalsurge_email: str
     finalsurge_password: str
     power_adjust: Tuple[Union[float, int], Union[float, int]] = (0, 0)
