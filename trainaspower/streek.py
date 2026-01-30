@@ -107,7 +107,7 @@ class StreekWorkoutLoader:
         workout_date = self._calculate_date(day_name, week_number)
 
         # Extract workout steps, separating strength and running workouts
-        strength_workouts, running_steps = self._extract_workout_steps(soup)
+        strength_workouts, running_steps, workout_level_notes = self._extract_workout_steps(soup)
 
         # Create workout(s) with sequential counter starting at 1 for each file
         workouts = []
@@ -135,7 +135,8 @@ class StreekWorkoutLoader:
                 week_number=week_number,
                 day_name=day_name,
                 steps=running_steps,
-                counter=counter
+                counter=counter,
+                workflow_notes=workout_level_notes
             )
             workouts.append(workout)
             counter += 1
@@ -197,7 +198,7 @@ class StreekWorkoutLoader:
     ) -> models.Workout:
         """Create a strength workout object."""
         workout = models.Workout()
-        workout.name = "[STREEK] Strength work"
+        workout.name = "Strength work"
         workout.description = f"Go to the detail page at {strength_url}"
         workout.date = workout_date
         workout.type = "Strength Training"
@@ -208,15 +209,16 @@ class StreekWorkoutLoader:
 
         return workout
 
-    def _extract_workout_steps(self, soup: BeautifulSoup) -> tuple[list[str], list[models.ConcreteStep]]:
+    def _extract_workout_steps(self, soup: BeautifulSoup) -> tuple[list[str], list[models.ConcreteStep], list[str]]:
         """
         Extract workout steps from HTML, filtering out ignored steps.
 
         Returns:
-            tuple: (list of strength workout names, list of running workout steps)
+            tuple: (list of strength workout names, list of running workout steps, the workout level description from the steps)
         """
         strength_workouts = []
         running_steps = []
+        workout_level_notes = []
 
         # Find all anchor tags that represent workout steps
         step_anchors = soup.find_all("a", class_=re.compile("min-h-"))
@@ -263,11 +265,37 @@ class StreekWorkoutLoader:
 
             # Create a step for each description
             for step_desc in step_descriptions:
+                # Collect for workout-level notes
+                workout_level_notes.append(step_desc)
+
+                # Check if this is a "detail" line, in which case it is not a new step
+                if (
+                    self._is_elevation_line(step_desc)
+                    or self._is_including_line(step_desc)
+                    or step_desc.startswith("in ")
+                ):
+                    if running_steps:
+                        # Attach to previous step's comments
+                        running_steps[-1].comments += f"\n{step_desc}"
+
+                    continue
+
                 step = self._create_step_from_description(step_name, step_desc)
                 if step:
                     running_steps.append(step)
 
-        return (strength_workouts, running_steps)
+        return (strength_workouts, running_steps, workout_level_notes)
+
+    def _is_elevation_line(self, description: str) -> bool:
+        """Check if a description is an elevation line (e.g., 'Elev: 200m', 'Elev: 100-200m')."""
+        # Pattern to match "Elev: " followed by a distance or distance range
+        elevation_pattern = re.compile(r"^Elev:\s*\d+(?:-\d+)?\s*(km|m)", re.IGNORECASE)
+        return bool(elevation_pattern.match(description))
+
+    def _is_including_line(self, description: str) -> bool:
+        """Check if a description line starts with 'including' (case-insensitive) or '+ '."""
+        desc_stripped = description.strip()
+        return desc_stripped.lower().startswith("including") or desc_stripped.startswith("+ ")
 
     def _create_step_from_description(self, step_name: str, description: str) -> Optional[models.ConcreteStep]:
         """Create a ConcreteStep from a step description."""
@@ -276,9 +304,10 @@ class StreekWorkoutLoader:
         # For other steps, use step_name
         if step_name == "Run":
             step.description = description
+            step.comments = ""
         else:
             step.description = step_name
-        step.comments = description
+            step.comments = description
         step.type = self._determine_step_type(description)
 
         # Parse distance
@@ -336,21 +365,21 @@ class StreekWorkoutLoader:
         week_number: int,
         day_name: str,
         steps: list[models.ConcreteStep],
-        counter: int = 1
+        counter: int = 1,
+        workflow_notes: list[str] | None = None
     ) -> models.Workout:
         """Create a Workout object."""
         workout = models.Workout()
 
-        # Extract workout name from h3 and add [STREEK] prefix
+        # Extract workout name from h3
         h3 = soup.find("h3")
         if h3:
             base_name = h3.get_text(strip=True)
         else:
             base_name = f"{day_name} Workout"
-        workout.name = f"[STREEK] {base_name}"
+        workout.name = base_name
 
-        # Create description from steps
-        workout.description = "\n".join([step.comments for step in steps if step.comments])
+        workout.description = "\n".join(workflow_notes)
 
         workout.date = workout_date
         workout.type = workout_type

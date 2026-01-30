@@ -142,22 +142,26 @@ def convert_step(step: models.Step, id_counter) -> dict:
     else:
         target_base = target_open
 
-    s.update(
-        {
-            "type": "step",
-            "id": next(id_counter),
-            "name": step.description,
-            "targetAbsOrPct": "",
-            "data": [],
-            "target": [
-                target_base,
-                target_open,
-            ],
-            "intensity": step.type,
-            "comments": None,
-        }
-    )
-    return s
+    try:
+        s.update(
+            {
+                "type": "step",
+                "id": next(id_counter),
+                "name": step.description,
+                "targetAbsOrPct": "",
+                "data": [],
+                "target": [
+                    target_base,
+                    target_open,
+                ],
+                "intensity": step.type,
+                "comments": step.comments,
+            }
+        )
+        return s
+    except Exception as err:
+        logger.exception(f"Error processing step: {repr(step)}")
+        raise err
 
 
 def convert_repeat(step: models.RepeatStep, id_counter) -> dict:
@@ -168,7 +172,7 @@ def convert_repeat(step: models.RepeatStep, id_counter) -> dict:
         "data": [convert_step(s, id_counter) for s in step.steps],
         "repeats": step.repetitions,
         "durationType": "OPEN",
-        "comments": None,
+        "comments": step.comments,
     }
 
 
@@ -207,9 +211,9 @@ def get_existing_tap_workout(wo_date: date, wo_type: str = None) -> Optional[str
 def add_workout(workout: models.Workout) -> None:
     wo_key = get_existing_tap_workout(workout.date, workout.type)
     if wo_key:
-        logger.info(f"Updating workout `{workout.name}` on Final Surge")
+        logger.info(f"Updating workout ({workout.date}) `{workout.name}` on Final Surge")
     else:
-        logger.info(f"Posting workout `{workout.name}` to Final Surge")
+        logger.info(f"Posting workout ({workout.date}) `{workout.name}` to Final Surge")
     wo = convert_workout(workout)
     params = {"scope": "USER", "scope_key": user_key}
 
