@@ -26,6 +26,7 @@ class Config(BaseModel):
     streek_folder: Optional[str]
     streek_startdate: Optional[str]
     streek_plan_base_url: Optional[str]
+    owl_file: Optional[str]
     finalsurge_email: str
     finalsurge_password: str
     power_adjust: Tuple[Union[float, int], Union[float, int]] = (0, 0)

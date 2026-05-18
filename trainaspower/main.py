@@ -8,7 +8,7 @@ import yaml
 from loguru import logger
 from pydantic import ValidationError
 
-from trainaspower import finalsurge, models, stryd, trainasone, vert
+from trainaspower import finalsurge, models, owl, stryd, trainasone, vert
 from trainaspower.streek import StreekWorkoutLoader
 
 if getattr(sys, "frozen", False):
@@ -86,7 +86,13 @@ def main():
     start_date = datetime.date.today()
 
     try:
-        if config.trainasone_email:
+        if config.owl_file:
+            workouts = [
+                w
+                for w in owl.load_workouts_from_yaml(config.owl_file)
+                if w.date >= start_date
+            ]
+        elif config.trainasone_email:
             trainasone.login(config.trainasone_email, config.trainasone_password)
             stryd.login(config.stryd_email, config.stryd_password)
             workouts = trainasone.get_next_workouts(config)
@@ -95,6 +101,12 @@ def main():
         elif config.streek_folder:
             streek_loader = StreekWorkoutLoader(config.streek_folder,datetime.date.fromisoformat(config.streek_startdate), config.streek_plan_base_url)
             workouts = [w for w in streek_loader.get_next_workouts(config) if w.date >= start_date]
+        else:
+            logger.error(
+                "No workout source configured. Set one of: owl_file, trainasone_email, vert_file, "
+                "or streek_folder (+ streek_startdate + streek_plan_base_url) in config.yaml."
+            )
+            sys.exit(1)
 
         # Convert to list if generator and sort by date in ascending order
         workouts = list(workouts) if not isinstance(workouts, list) else workouts

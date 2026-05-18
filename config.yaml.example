@@ -2,6 +2,8 @@ stryd_email: my@email.com
 stryd_password: my_password
 trainasone_email: my@email.com
 trainasone_password: my_password
+# Local OWL-style plan (YAML list of workouts). When set, this source is used instead of TrainAsOne / Vert / Streek.
+# owl_file: bondi-2-manly/owl.yml
 finalsurge_email: my@email.com
 finalsurge_password: my_password
 power_adjust: [0, 0]

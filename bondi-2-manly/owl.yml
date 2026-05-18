@@ -1,0 +1,1037 @@
+- id: W01-TUE
+  name: "Week 1 Tue — Easy Shakeout"
+  type: RUN
+  date: 2026-05-19
+  distance: 6km
+  description: "RECOVERY WEEK 1. Very easy shakeout jog. RPE 2-3 max. Flat or gentle terrain. Stop if foot pain increases. Active recovery only."
+  steps:
+    - {type: ConcreteStep, description: "Easy shakeout jog", comments: "RPE 2-3. Flat terrain. Stop if foot pain increases. This is not a fitness session.", length: 6km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W01-THU
+  name: "Week 1 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-05-21
+  distance: 8km
+  description: "Easy aerobic run. RPE 3. Flat to gentle rolling hills. Focus on relaxed form. PREHAB: 3x15 eccentric calf raises + 2min ankle mobility after."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3. Relaxed form. Rolling terrain OK.", length: 8km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+
+- id: W01-SAT
+  name: "Week 1 Sat — Easy with Strides"
+  type: RUN
+  date: 2026-05-23
+  distance: 8km
+  description: "Easy 8km with 4x 200m strides. RPE 3 easy, RPE 6-7 strides. Focus on glute engagement during strides, not calf push-off."
+  steps:
+    - {type: ConcreteStep, description: "Easy jog 6km", comments: "RPE 3. Flat road or gentle trail.", length: 6km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - type: RepeatStep
+      repetitions: 4
+      description: "Repeat 4x strides"
+      comments: "200m at RPE 6-7. Drive from hips/glutes. Walk 60s recovery."
+      steps:
+        - {type: ConcreteStep, description: "200m stride", comments: "Controlled fast running. Upright posture. Relaxed arms.", length: 200m, pace_range: {min: "4:20 /km", max: "4:50 /km"}}
+        - {type: ConcreteStep, description: "60 sec recovery walk", comments: "Full recovery."}
+
+- id: W01-SUN
+  name: "Week 1 Sun — Long Run (Recovery)"
+  type: RUN
+  date: 2026-05-24
+  distance: 18km
+  description: "Recovery long run. RPE 3. Flat to gentle rolling terrain. Practice electrolytes every 20-25 min. Cut short if foot pain."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "18km at RPE 3. Conversational pace. Hydrate with electrolytes every 20-25 min.", length: 18km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W02-TUE
+  name: "Week 2 Tue — Easy + Drills"
+  type: RUN
+  date: 2026-05-26
+  distance: 8km
+  description: "Easy 8km with form drills. RPE 3. Include 4x 100m pickups at RPE 6. PREHAB: 3x15 eccentric calf raises after."
+  steps:
+    - {type: ConcreteStep, description: "Easy jog 2km warm-up", comments: "RPE 2-3. Include dynamic stretches: leg swings, high knees, butt kicks (20m each).", length: 2km, pace_range: {min: "6:40 /km", max: "7:10 /km"}}
+    - type: RepeatStep
+      repetitions: 4
+      description: "Repeat 4x form drill segments"
+      comments: "100m pickup at RPE 6 every ~1.5km. Quick cadence, glute drive."
+      steps:
+        - {type: ConcreteStep, description: "100m pickup", comments: "RPE 6. Quick feet, high cadence (~180). Drive from hips.", length: 100m, pace_range: {min: "4:30 /km", max: "5:00 /km"}}
+        - {type: ConcreteStep, description: "Easy jog ~1.4km", comments: "RPE 3.", length: 1.4km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+
+- id: W02-THU
+  name: "Week 2 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-05-28
+  distance: 9km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. Focus on consistent effort. PREHAB: calf raises and ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3. Rolling terrain.", length: 9km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W02-SAT
+  name: "Week 2 Sat — Easy with Uphill Form Focus"
+  type: RUN
+  date: 2026-05-30
+  distance: 10km
+  description: "Easy 10km on rolling terrain. RPE 3 flats, RPE 4 uphills. UPHILL FORM: shorter stride, forward lean from ankles, drive from glutes. Keep calves relaxed. This directly addresses your calf cramp issue."
+  steps:
+    - {type: ConcreteStep, description: "Easy run on rolling terrain", comments: "10km. RPE 3 flats, RPE 4 uphills. Glute-driven climbing. Calves relaxed.", length: 10km, pace_range: {min: "6:00 /km", max: "6:50 /km"}}
+
+- id: W02-SUN
+  name: "Week 2 Sun — Long Run"
+  type: RUN
+  date: 2026-05-31
+  distance: 22km
+  description: "Long run. RPE 3-4. Rolling terrain. Nutrition: electrolytes every 20 min, gel at 1h. Focus on glute engagement on uphills."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "22km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel at 1h. Glute-driven climbing.", length: 22km, pace_range: {min: "6:10 /km", max: "6:40 /km"}}
+
+# ============================================================
+# PHASE 2: BUILD (Weeks 3-8)
+# ============================================================
+
+- id: W03-TUE
+  name: "Week 3 Tue — Tempo Intro"
+  type: RUN
+  date: 2026-06-02
+  distance: 10km
+  description: "First quality session. 15min WU, 20min tempo (RPE 7), 10min CD. Tempo = comfortably hard, 2-3 words at a time."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3. Flat road. Dynamic stretches before.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "Tempo: 20 min at half-marathon effort", comments: "RPE 7. Comfortably hard. ~10km race effort.", length: "20 min", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W03-THU
+  name: "Week 3 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-06-04
+  distance: 9km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3. Rolling terrain.", length: 9km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W03-SAT
+  name: "Week 3 Sat — Marathon Pace Intro"
+  type: RUN
+  date: 2026-06-06
+  distance: 12km
+  description: "15min WU, 25min at marathon pace (RPE 6), 10min CD. Marathon pace = sustainable, controlled. This is your 80km race effort."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "25 min at marathon pace", comments: "RPE 6. Sustainable and controlled. Target 80km race effort.", length: "25 min", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W03-SUN
+  name: "Week 3 Sun — Long Run"
+  type: RUN
+  date: 2026-06-07
+  distance: 26km
+  description: "Long run. RPE 3-4. Rolling terrain. Nutrition practice: electrolytes every 20 min, gel every 45 min."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "26km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min. Glute-driven climbing.", length: 26km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W04-TUE
+  name: "Week 4 Tue — Cruise Intervals"
+  type: RUN
+  date: 2026-06-09
+  distance: 11km
+  description: "Cruise intervals: 15min WU, 4x 5min at half-marathon effort (RPE 7) with 2min easy jog recovery, 10min CD."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3. Dynamic stretches.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - type: RepeatStep
+      repetitions: 4
+      description: "Repeat 4x cruise intervals"
+      comments: "5 min at RPE 7 with 2 min easy jog recovery."
+      steps:
+        - {type: ConcreteStep, description: "5 min at half-marathon effort", comments: "RPE 7.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+        - {type: ConcreteStep, description: "2 min easy jog recovery", comments: "RPE 2-3.", length: 400m, pace_range: {min: "7:00 /km", max: "7:30 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W04-THU
+  name: "Week 4 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-06-11
+  distance: 9km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 9km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W04-SAT
+  name: "Week 4 Sat — Cut-Down Run"
+  type: RUN
+  date: 2026-06-13
+  distance: 12km
+  description: "Cut-down run: 15min WU, 10min RPE 6, 8min RPE 7, 6min RPE 8, 10min CD. Each segment gets harder. Teaches pace control."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "10 min at marathon pace (RPE 6)", comments: "Controlled.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "8 min at half-marathon effort (RPE 7)", comments: "Noticeably harder but controlled.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "6 min at 10K effort (RPE 8)", comments: "Hard but not all-out.", pace_range: {min: "4:45 /km", max: "5:00 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W04-SUN
+  name: "Week 4 Sun — Long Run"
+  type: RUN
+  date: 2026-06-14
+  distance: 28km
+  description: "Long run. RPE 3-4. Rolling terrain. Full nutrition practice. First 'real' long run of the cycle."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "28km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min.", length: 28km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W05-TUE
+  name: "Week 5 Tue — Tempo Run"
+  type: RUN
+  date: 2026-06-16
+  distance: 11km
+  description: "Tempo: 15min WU, 30min at tempo (RPE 7), 10min CD. Building tempo duration."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "Tempo: 30 min at half-marathon effort", comments: "RPE 7. Sustained effort. Break into 3x 10min mentally if needed.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W05-THU
+  name: "Week 5 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-06-18
+  distance: 10km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 10km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W05-SAT
+  name: "Week 5 Sat — Marathon Pace Steady State"
+  type: RUN
+  date: 2026-06-20
+  distance: 14km
+  description: "15min WU, 30min at marathon pace (RPE 6), 10min CD. Extending the marathon-pace block."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "30 min at marathon pace", comments: "RPE 6. Your 80km race effort.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W05-SUN
+  name: "Week 5 Sun — Long Run"
+  type: RUN
+  date: 2026-06-21
+  distance: 30km
+  description: "Long run. RPE 3-4. Rolling terrain. Full nutrition practice. Now into proper build phase."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "30km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min.", length: 30km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W06-TUE
+  name: "Week 6 Tue — Cruise Intervals"
+  type: RUN
+  date: 2026-06-23
+  distance: 12km
+  description: "Cruise intervals: 15min WU, 5x 5min at half-marathon effort (RPE 7) with 2min easy jog recovery, 10min CD. Adding one more rep."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - type: RepeatStep
+      repetitions: 5
+      description: "Repeat 5x cruise intervals"
+      comments: "5 min at RPE 7 with 2 min easy jog recovery."
+      steps:
+        - {type: ConcreteStep, description: "5 min at half-marathon effort", comments: "RPE 7.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+        - {type: ConcreteStep, description: "2 min easy jog recovery", comments: "RPE 2-3.", length: 400m, pace_range: {min: "7:00 /km", max: "7:30 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W06-THU
+  name: "Week 6 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-06-25
+  distance: 10km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 10km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W06-SAT
+  name: "Week 6 Sat — Cut-Down Run"
+  type: RUN
+  date: 2026-06-27
+  distance: 13km
+  description: "Cut-down run: 15min WU, 10min RPE 6, 10min RPE 7, 8min RPE 8, 10min CD."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "10 min at marathon pace (RPE 6)", comments: "Controlled.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "10 min at half-marathon effort (RPE 7)", comments: "Strong and controlled.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "8 min at 10K effort (RPE 8)", comments: "Hard but controlled.", pace_range: {min: "4:45 /km", max: "5:00 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W06-SUN
+  name: "Week 6 Sun — Long Run"
+  type: RUN
+  date: 2026-06-28
+  distance: 30km
+  description: "Long run. RPE 3-4. Rolling terrain. Full nutrition practice."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "30km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min.", length: 30km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W07-TUE
+  name: "Week 7 Tue — Tempo Run"
+  type: RUN
+  date: 2026-06-30
+  distance: 12km
+  description: "Tempo: 15min WU, 35min at tempo (RPE 7), 10min CD. Building duration."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "Tempo: 35 min at half-marathon effort", comments: "RPE 7. Sustained and strong. Should feel more natural now.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W07-THU
+  name: "Week 7 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-07-02
+  distance: 10km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 10km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W07-SAT
+  name: "Week 7 Sat — Marathon Pace Steady State"
+  type: RUN
+  date: 2026-07-04
+  distance: 15km
+  description: "15min WU, 40min at marathon pace (RPE 6), 10min CD. Extending to 40 min."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "40 min at marathon pace", comments: "RPE 6. Your 80km race effort. Relaxed, sustainable.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W07-SUN
+  name: "Week 7 Sun — Long Run"
+  type: RUN
+  date: 2026-07-05
+  distance: 32km
+  description: "Long run. RPE 3-4. Rolling terrain. Full nutrition practice. Now at 32km."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "32km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min. Glute-driven climbing.", length: 32km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W08-TUE
+  name: "Week 8 Tue — Cruise Intervals"
+  type: RUN
+  date: 2026-07-07
+  distance: 12km
+  description: "Cruise intervals: 15min WU, 4x 6min at half-marathon effort (RPE 7) with 2min easy jog recovery, 10min CD. Longer intervals."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - type: RepeatStep
+      repetitions: 4
+      description: "Repeat 4x cruise intervals"
+      comments: "6 min at RPE 7 with 2 min easy jog recovery."
+      steps:
+        - {type: ConcreteStep, description: "6 min at half-marathon effort", comments: "RPE 7.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+        - {type: ConcreteStep, description: "2 min easy jog recovery", comments: "RPE 2-3.", length: 400m, pace_range: {min: "7:00 /km", max: "7:30 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W08-THU
+  name: "Week 8 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-07-09
+  distance: 10km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 10km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W08-SAT
+  name: "Week 8 Sat — Cut-Down Run"
+  type: RUN
+  date: 2026-07-11
+  distance: 13km
+  description: "Cut-down run: 15min WU, 12min RPE 6, 10min RPE 7, 8min RPE 8, 10min CD."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "12 min at marathon pace (RPE 6)", comments: "Controlled.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "10 min at half-marathon effort (RPE 7)", comments: "Strong and controlled.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "8 min at 10K effort (RPE 8)", comments: "Hard but controlled.", pace_range: {min: "4:45 /km", max: "5:00 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W08-SUN
+  name: "Week 8 Sun — Long Run (Recovery Week)"
+  type: RUN
+  date: 2026-07-12
+  distance: 24km
+  description: "RECOVERY WEEK. Long run reduced to 24km. RPE 3. Easy rolling terrain. Absorb training from weeks 3-7. Extra calf/foot mobility after."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "24km at RPE 3. Easy rolling terrain. Down week — enjoy the reduced volume.", length: 24km, pace_range: {min: "6:10 /km", max: "6:50 /km"}}
+# ============================================================
+# PHASE 2 CONTINUED: BUILD (Weeks 9-12)
+# ============================================================
+
+- id: W09-TUE
+  name: "Week 9 Tue — Tempo Run"
+  type: RUN
+  date: 2026-07-14
+  distance: 12km
+  description: "Tempo: 15min WU, 35min at tempo (RPE 7), 10min CD. Back to full intensity after recovery week."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "Tempo: 35 min at half-marathon effort", comments: "RPE 7. Sustained and strong.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W09-THU
+  name: "Week 9 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-07-16
+  distance: 10km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 10km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W09-SAT
+  name: "Week 9 Sat — Marathon Pace Steady State"
+  type: RUN
+  date: 2026-07-18
+  distance: 16km
+  description: "15min WU, 45min at marathon pace (RPE 6), 10min CD. Building toward longer marathon-pace blocks."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "45 min at marathon pace", comments: "RPE 6. Your 80km race effort. Relaxed and sustainable.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W09-SUN
+  name: "Week 9 Sun — Long Run"
+  type: RUN
+  date: 2026-07-19
+  distance: 32km
+  description: "Long run. RPE 3-4. Rolling terrain. Full nutrition practice."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "32km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min.", length: 32km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W10-TUE
+  name: "Week 10 Tue — Cruise Intervals"
+  type: RUN
+  date: 2026-07-21
+  distance: 13km
+  description: "Cruise intervals: 15min WU, 5x 5min at half-marathon effort (RPE 7) with 90s easy jog recovery, 10min CD. Shorter recovery to increase demand."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - type: RepeatStep
+      repetitions: 5
+      description: "Repeat 5x cruise intervals"
+      comments: "5 min at RPE 7 with 90s easy jog recovery."
+      steps:
+        - {type: ConcreteStep, description: "5 min at half-marathon effort", comments: "RPE 7.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+        - {type: ConcreteStep, description: "90 sec easy jog recovery", comments: "RPE 2-3. Shorter recovery this week.", length: 300m, pace_range: {min: "7:00 /km", max: "7:30 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W10-THU
+  name: "Week 10 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-07-23
+  distance: 10km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 10km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W10-SAT
+  name: "Week 10 Sat — Cut-Down Run"
+  type: RUN
+  date: 2026-07-25
+  distance: 14km
+  description: "Cut-down run: 15min WU, 12min RPE 6, 10min RPE 7, 10min RPE 8, 10min CD."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "12 min at marathon pace (RPE 6)", comments: "Controlled.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "10 min at half-marathon effort (RPE 7)", comments: "Strong and controlled.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "10 min at 10K effort (RPE 8)", comments: "Hard but controlled.", pace_range: {min: "4:45 /km", max: "5:00 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W10-SUN
+  name: "Week 10 Sun — Long Run"
+  type: RUN
+  date: 2026-07-26
+  distance: 34km
+  description: "Long run. RPE 3-4. Rolling terrain. Full nutrition practice. Longest run so far — big milestone."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "34km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min. Building serious endurance.", length: 34km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W11-TUE
+  name: "Week 11 Tue — Tempo Run"
+  type: RUN
+  date: 2026-07-28
+  distance: 12km
+  description: "Tempo: 15min WU, 40min at tempo (RPE 7), 10min CD. Peak tempo duration."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "Tempo: 40 min at half-marathon effort", comments: "RPE 7. Big session. Stay controlled and trust your training.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W11-THU
+  name: "Week 11 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-07-30
+  distance: 10km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 10km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W11-SAT
+  name: "Week 11 Sat — Marathon Pace Steady State"
+  type: RUN
+  date: 2026-08-01
+  distance: 16km
+  description: "15min WU, 50min at marathon pace (RPE 6), 10min CD. Longest marathon-pace block yet."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "50 min at marathon pace", comments: "RPE 6. Your 80km race effort. Key session — practicing exact effort for 80km.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W11-SUN
+  name: "Week 11 Sun — Long Run"
+  type: RUN
+  date: 2026-08-02
+  distance: 34km
+  description: "Long run. RPE 3-4. Rolling terrain. Full nutrition practice."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "34km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min.", length: 34km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W12-TUE
+  name: "Week 12 Tue — Cruise Intervals"
+  type: RUN
+  date: 2026-08-04
+  distance: 13km
+  description: "Cruise intervals: 15min WU, 4x 7min at half-marathon effort (RPE 7) with 2min easy jog recovery, 10min CD."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - type: RepeatStep
+      repetitions: 4
+      description: "Repeat 4x cruise intervals"
+      comments: "7 min at RPE 7 with 2 min easy jog recovery."
+      steps:
+        - {type: ConcreteStep, description: "7 min at half-marathon effort", comments: "RPE 7.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+        - {type: ConcreteStep, description: "2 min easy jog recovery", comments: "RPE 2-3.", length: 400m, pace_range: {min: "7:00 /km", max: "7:30 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W12-THU
+  name: "Week 12 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-08-06
+  distance: 10km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 10km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W12-SAT
+  name: "Week 12 Sat — Cut-Down Run"
+  type: RUN
+  date: 2026-08-08
+  distance: 14km
+  description: "Cut-down run: 15min WU, 15min RPE 6, 10min RPE 7, 10min RPE 8, 10min CD."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "15 min at marathon pace (RPE 6)", comments: "Controlled.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "10 min at half-marathon effort (RPE 7)", comments: "Strong and controlled.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "10 min at 10K effort (RPE 8)", comments: "Hard but controlled.", pace_range: {min: "4:45 /km", max: "5:00 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W12-SUN
+  name: "Week 12 Sun — Long Run (Recovery Week)"
+  type: RUN
+  date: 2026-08-09
+  distance: 26km
+  description: "RECOVERY WEEK. Long run reduced to 26km. RPE 3. Easy rolling terrain. Absorb training from weeks 9-11. Extra calf/foot mobility after."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "26km at RPE 3. Easy rolling terrain. Down week — recover well.", length: 26km, pace_range: {min: "6:10 /km", max: "6:50 /km"}}
+
+# ============================================================
+# PHASE 3: PEAK (Weeks 13-16)
+# ============================================================
+
+- id: W13-TUE
+  name: "Week 13 Tue — Tempo Run"
+  type: RUN
+  date: 2026-08-11
+  distance: 12km
+  description: "Tempo: 15min WU, 40min at tempo (RPE 7), 10min CD. Matching week 11 peak."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "Tempo: 40 min at half-marathon effort", comments: "RPE 7. Sustained and strong.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W13-THU
+  name: "Week 13 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-08-13
+  distance: 10km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 10km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W13-SAT
+  name: "Week 13 Sat — Marathon Pace Steady State"
+  type: RUN
+  date: 2026-08-15
+  distance: 18km
+  description: "15min WU, 50min at marathon pace (RPE 6), 10min CD. Matching week 11 peak."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "50 min at marathon pace", comments: "RPE 6. Your 80km race effort. Key session.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W13-SUN
+  name: "Week 13 Sun — Long Run"
+  type: RUN
+  date: 2026-08-16
+  distance: 34km
+  description: "Long run. RPE 3-4. Rolling terrain. Full nutrition practice."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "34km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min.", length: 34km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W14-TUE
+  name: "Week 14 Tue — Cruise Intervals"
+  type: RUN
+  date: 2026-08-18
+  distance: 13km
+  description: "Cruise intervals: 15min WU, 5x 5min at half-marathon effort (RPE 7) with 90s easy jog recovery, 10min CD."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - type: RepeatStep
+      repetitions: 5
+      description: "Repeat 5x cruise intervals"
+      comments: "5 min at RPE 7 with 90s easy jog recovery."
+      steps:
+        - {type: ConcreteStep, description: "5 min at half-marathon effort", comments: "RPE 7.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+        - {type: ConcreteStep, description: "90 sec easy jog recovery", comments: "RPE 2-3.", length: 300m, pace_range: {min: "7:00 /km", max: "7:30 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W14-THU
+  name: "Week 14 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-08-20
+  distance: 10km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 10km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W14-SAT
+  name: "Week 14 Sat — Cut-Down Run"
+  type: RUN
+  date: 2026-08-22
+  distance: 14km
+  description: "Cut-down run: 15min WU, 15min RPE 6, 12min RPE 7, 10min RPE 8, 10min CD."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "15 min at marathon pace (RPE 6)", comments: "Controlled.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "12 min at half-marathon effort (RPE 7)", comments: "Strong and controlled.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "10 min at 10K effort (RPE 8)", comments: "Hard but controlled.", pace_range: {min: "4:45 /km", max: "5:00 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W14-SUN
+  name: "Week 14 Sun — Long Run"
+  type: RUN
+  date: 2026-08-23
+  distance: 34km
+  description: "Long run. RPE 3-4. Rolling terrain. Full nutrition practice. Last long run at this distance before peak."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "34km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min.", length: 34km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W15-TUE
+  name: "Week 15 Tue — Tempo Run (Peak)"
+  type: RUN
+  date: 2026-08-25
+  distance: 13km
+  description: "PEAK TEMPO. 15min WU, 45min at tempo (RPE 7), 10min CD. Longest tempo block — major fitness milestone."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "Tempo: 45 min at half-marathon effort", comments: "RPE 7. Peak tempo session. Stay controlled. Break into 3x 15min mentally if needed.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W15-THU
+  name: "Week 15 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-08-27
+  distance: 10km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 10km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W15-SAT
+  name: "Week 15 Sat — Marathon Pace Steady State (Peak)"
+  type: RUN
+  date: 2026-08-29
+  distance: 18km
+  description: "15min WU, 60min at marathon pace (RPE 6), 10min CD. One hour at race effort — key peak session."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "60 min at marathon pace", comments: "RPE 6. One hour at your 80km race effort. Most important session of the build. Stay relaxed.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W15-SUN
+  name: "Week 15 Sun — Long Run (Peak)"
+  type: RUN
+  date: 2026-08-30
+  distance: 36km
+  description: "PEAK LONG RUN. 36km. RPE 3-4. Rolling terrain. Full nutrition practice. Longest run of the entire plan."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "36km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min. Glute-driven climbing. You've built to this — trust your training.", length: 36km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W16-TUE
+  name: "Week 16 Tue — Cruise Intervals (Peak)"
+  type: RUN
+  date: 2026-09-01
+  distance: 13km
+  description: "Cruise intervals: 15min WU, 5x 6min at half-marathon effort (RPE 7) with 2min easy jog recovery, 10min CD. Peak volume."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - type: RepeatStep
+      repetitions: 5
+      description: "Repeat 5x cruise intervals"
+      comments: "6 min at RPE 7 with 2 min easy jog recovery."
+      steps:
+        - {type: ConcreteStep, description: "6 min at half-marathon effort", comments: "RPE 7.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+        - {type: ConcreteStep, description: "2 min easy jog recovery", comments: "RPE 2-3.", length: 400m, pace_range: {min: "7:00 /km", max: "7:30 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W16-THU
+  name: "Week 16 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-09-03
+  distance: 10km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 10km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W16-SAT
+  name: "Week 16 Sat — Cut-Down Run (Peak)"
+  type: RUN
+  date: 2026-09-05
+  distance: 15km
+  description: "Cut-down run: 15min WU, 15min RPE 6, 12min RPE 7, 12min RPE 8, 10min CD. Peak version."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "15 min at marathon pace (RPE 6)", comments: "Controlled.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "12 min at half-marathon effort (RPE 7)", comments: "Strong and controlled.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "12 min at 10K effort (RPE 8)", comments: "Hard but controlled.", pace_range: {min: "4:45 /km", max: "5:00 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W16-SUN
+  name: "Week 16 Sun — Long Run (Peak)"
+  type: RUN
+  date: 2026-09-06
+  distance: 36km
+  description: "PEAK LONG RUN (second). 36km. RPE 3-4. Rolling terrain. Full nutrition practice. Second of two peak long runs. After this, taper begins."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "36km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min. Peak fitness — enjoy this run.", length: 36km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+# ============================================================
+# PHASE 4: TAPER (Weeks 17-20)
+# ============================================================
+
+- id: W17-TUE
+  name: "Week 17 Tue — Tempo (Taper Begins)"
+  type: RUN
+  date: 2026-09-08
+  distance: 11km
+  description: "TAPER WEEK 1 of 4. Tempo reduced: 15min WU, 30min at tempo (RPE 7), 10min CD. Volume drops but intensity stays. Let the body absorb peak training."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "Tempo: 30 min at half-marathon effort", comments: "RPE 7. Reduced from peak but still strong.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W17-THU
+  name: "Week 17 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-09-10
+  distance: 9km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 9km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W17-SAT
+  name: "Week 17 Sat — Marathon Pace (Reduced)"
+  type: RUN
+  date: 2026-09-12
+  distance: 14km
+  description: "15min WU, 35min at marathon pace (RPE 6), 10min CD. Reduced from peak but maintaining race-pace feel."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "35 min at marathon pace", comments: "RPE 6. Your 80km race effort. Stay relaxed.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W17-SUN
+  name: "Week 17 Sun — Long Run (Taper)"
+  type: RUN
+  date: 2026-09-13
+  distance: 30km
+  description: "Long run reduced to 30km. RPE 3-4. Rolling terrain. Taper has begun — you should feel fresher. Full nutrition practice."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "30km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min. Should feel noticeably fresher than peak weeks.", length: 30km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W18-TUE
+  name: "Week 18 Tue — Cruise Intervals (Taper)"
+  type: RUN
+  date: 2026-09-15
+  distance: 11km
+  description: "TAPER WEEK 2 of 4. Cruise intervals reduced: 15min WU, 4x 5min at half-marathon effort (RPE 7) with 2min easy jog recovery, 10min CD."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - type: RepeatStep
+      repetitions: 4
+      description: "Repeat 4x cruise intervals"
+      comments: "5 min at RPE 7 with 2 min easy jog recovery."
+      steps:
+        - {type: ConcreteStep, description: "5 min at half-marathon effort", comments: "RPE 7.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+        - {type: ConcreteStep, description: "2 min easy jog recovery", comments: "RPE 2-3.", length: 400m, pace_range: {min: "7:00 /km", max: "7:30 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W18-THU
+  name: "Week 18 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-09-17
+  distance: 8km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 8km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W18-SAT
+  name: "Week 18 Sat — Cut-Down Run (Reduced)"
+  type: RUN
+  date: 2026-09-19
+  distance: 12km
+  description: "Cut-down run: 15min WU, 10min RPE 6, 8min RPE 7, 6min RPE 8, 10min CD. Reduced segments."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "10 min at marathon pace (RPE 6)", comments: "Controlled.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "8 min at half-marathon effort (RPE 7)", comments: "Strong and controlled.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "6 min at 10K effort (RPE 8)", comments: "Hard but controlled.", pace_range: {min: "4:45 /km", max: "5:00 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W18-SUN
+  name: "Week 18 Sun — Long Run (Taper)"
+  type: RUN
+  date: 2026-09-20
+  distance: 28km
+  description: "Long run reduced to 28km. RPE 3-4. Rolling terrain. Full nutrition practice. Feeling stronger as fatigue dissipates."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "28km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min. You should feel noticeably stronger.", length: 28km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W19-TUE
+  name: "Week 19 Tue — Tempo (Taper)"
+  type: RUN
+  date: 2026-09-22
+  distance: 10km
+  description: "TAPER WEEK 3 of 4. Tempo: 15min WU, 25min at tempo (RPE 7), 10min CD. Further reduced."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "Tempo: 25 min at half-marathon effort", comments: "RPE 7. Shorter but still sharp.", pace_range: {min: "5:05 /km", max: "5:20 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W19-THU
+  name: "Week 19 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-09-24
+  distance: 8km
+  description: "Easy aerobic run. RPE 3. Rolling terrain. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3.", length: 8km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W19-SAT
+  name: "Week 19 Sat — Marathon Pace (Reduced)"
+  type: RUN
+  date: 2026-09-26
+  distance: 12km
+  description: "15min WU, 25min at marathon pace (RPE 6), 10min CD. Keeping the race-pace feel without fatigue."
+  steps:
+    - {type: ConcreteStep, description: "Warm up 15 min easy jog", comments: "RPE 2-3.", length: 3km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - {type: ConcreteStep, description: "25 min at marathon pace", comments: "RPE 6. Your 80km race effort. Relaxed and controlled.", pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+    - {type: ConcreteStep, description: "Cool down 10 min easy jog", comments: "RPE 2-3.", length: 2km, pace_range: {min: "6:40 /km", max: "7:20 /km"}}
+
+- id: W19-SUN
+  name: "Week 19 Sun — Long Run (Taper)"
+  type: RUN
+  date: 2026-09-27
+  distance: 24km
+  description: "Long run reduced to 24km. RPE 3-4. Rolling terrain. Full nutrition practice. You're deep into the taper now — legs should be feeling fresh."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "24km at RPE 3-4. Rolling hills. Electrolytes every 20 min, gel every 45 min. Legs should feel fresh now.", length: 24km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W20-TUE
+  name: "Week 20 Tue — Easy + Strides (Taper)"
+  type: RUN
+  date: 2026-09-29
+  distance: 8km
+  description: "TAPER WEEK 4 (final full week). Easy 8km with 4x 200m strides. RPE 3 easy, RPE 6-7 strides. Shake the legs out, stay sharp."
+  steps:
+    - {type: ConcreteStep, description: "Easy jog 6km", comments: "RPE 3. Flat to rolling.", length: 6km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+    - type: RepeatStep
+      repetitions: 4
+      description: "Repeat 4x strides"
+      comments: "200m at RPE 6-7. Smooth and controlled. Walk 60s recovery."
+      steps:
+        - {type: ConcreteStep, description: "200m stride", comments: "Controlled fast. Glute drive.", length: 200m, pace_range: {min: "4:20 /km", max: "4:50 /km"}}
+        - {type: ConcreteStep, description: "60 sec recovery walk", comments: "Full recovery."}
+    - {type: ConcreteStep, description: "Easy jog cool-down", comments: "RPE 2. Shake it out.", length: 1.6km, pace_range: {min: "6:40 /km", max: "7:10 /km"}}
+
+- id: W20-THU
+  name: "Week 20 Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-10-01
+  distance: 6km
+  description: "Easy aerobic run. RPE 3. Keep it short and relaxed. PREHAB: calf raises, ankle mobility."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 3. Short and relaxed.", length: 6km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+
+- id: W20-SAT
+  name: "Week 20 Sat — Easy Shakeout"
+  type: RUN
+  date: 2026-10-03
+  distance: 8km
+  description: "Easy shakeout. RPE 3. Include 3x 200m at marathon effort (RPE 6) to stay sharp. Last real run before the race block."
+  steps:
+    - {type: ConcreteStep, description: "Easy jog 6km", comments: "RPE 3.", length: 6km, pace_range: {min: "6:20 /km", max: "6:50 /km"}}
+    - type: RepeatStep
+      repetitions: 3
+      description: "Repeat 3x marathon effort"
+      comments: "200m at RPE 6. Stay sharp. Walk 60s recovery."
+      steps:
+        - {type: ConcreteStep, description: "200m at marathon effort", comments: "RPE 6. Controlled.", length: 200m, pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+        - {type: ConcreteStep, description: "60 sec recovery walk", comments: "Full recovery."}
+    - {type: ConcreteStep, description: "Easy jog cool-down", comments: "RPE 2.", length: 1.4km, pace_range: {min: "6:40 /km", max: "7:10 /km"}}
+
+- id: W20-SUN
+  name: "Week 20 Sun — Long Run (Taper)"
+  type: RUN
+  date: 2026-10-04
+  distance: 20km
+  description: "Final taper long run. 20km. RPE 3. Rolling terrain. Practice race-day nutrition one last time. This is the last long run before race week."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "20km at RPE 3. Rolling hills. Electrolytes every 20 min, gel every 45 min. Last long run — you're ready.", length: 20km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+# ============================================================
+# PHASE 5: RACE WEEK (Week 21-23)
+# ============================================================
+
+- id: W21-TUE
+  name: "Race Week Tue — Easy Shakeout"
+  type: RUN
+  date: 2026-10-06
+  distance: 6km
+  description: "RACE WEEK. Easy 6km shakeout. RPE 2-3. Include 3x 200m strides at RPE 6 to stay loose. Don't do anything hard this week."
+  steps:
+    - {type: ConcreteStep, description: "Easy jog 5km", comments: "RPE 2-3. Relaxed.", length: 5km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - type: RepeatStep
+      repetitions: 3
+      description: "Repeat 3x strides"
+      comments: "200m at RPE 6. Light and easy. Walk 60s recovery."
+      steps:
+        - {type: ConcreteStep, description: "200m stride", comments: "Light and easy.", length: 200m, pace_range: {min: "4:30 /km", max: "5:00 /km"}}
+        - {type: ConcreteStep, description: "60 sec recovery walk", comments: "Full recovery."}
+
+- id: W21-THU
+  name: "Race Week Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-10-08
+  distance: 5km
+  description: "Easy 5km. RPE 2-3. Keep it very short and relaxed. Stay loose."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 2-3. Very short and relaxed.", length: 5km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+
+- id: W21-SAT
+  name: "Race Week Sat — Easy Shakeout"
+  type: RUN
+  date: 2026-10-10
+  distance: 4km
+  description: "Easy 4km shakeout. RPE 2. Very light. Include 2x 200m at marathon effort (RPE 6) just to feel the legs turn over."
+  steps:
+    - {type: ConcreteStep, description: "Easy jog 3.6km", comments: "RPE 2. Very light.", length: 3.6km, pace_range: {min: "6:40 /km", max: "7:10 /km"}}
+    - type: RepeatStep
+      repetitions: 2
+      description: "Repeat 2x strides"
+      comments: "200m at RPE 6. Just to feel the legs. Walk 60s recovery."
+      steps:
+        - {type: ConcreteStep, description: "200m at marathon effort", comments: "RPE 6. Light.", length: 200m, pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+        - {type: ConcreteStep, description: "60 sec recovery walk", comments: "Full recovery."}
+
+- id: W21-SUN
+  name: "Race Week Sun — Long Run (Taper)"
+  type: RUN
+  date: 2026-10-11
+  distance: 16km
+  description: "Final taper long run. 16km. RPE 3. Rolling terrain. Last run of any distance before the race. Practice race-day nutrition. You've done the work — trust your training."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "16km at RPE 3. Rolling hills. Electrolytes every 20 min, gel every 45 min. Last long run before race day. You're ready.", length: 16km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W22-TUE
+  name: "Race Week Tue — Easy Shakeout"
+  type: RUN
+  date: 2026-10-13
+  distance: 5km
+  description: "RACE WEEK. Easy 5km shakeout. RPE 2-3. Include 3x 200m strides at RPE 6. Stay loose, stay relaxed."
+  steps:
+    - {type: ConcreteStep, description: "Easy jog 4.4km", comments: "RPE 2-3.", length: 4.4km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - type: RepeatStep
+      repetitions: 3
+      description: "Repeat 3x strides"
+      comments: "200m at RPE 6. Walk 60s recovery."
+      steps:
+        - {type: ConcreteStep, description: "200m stride", comments: "Light and easy.", length: 200m, pace_range: {min: "4:30 /km", max: "5:00 /km"}}
+        - {type: ConcreteStep, description: "60 sec recovery walk", comments: "Full recovery."}
+
+- id: W22-THU
+  name: "Race Week Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-10-15
+  distance: 4km
+  description: "Easy 4km. RPE 2-3. Keep it very short and relaxed."
+  steps:
+    - {type: ConcreteStep, description: "Easy aerobic run", comments: "RPE 2-3. Very short and relaxed.", length: 4km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+
+- id: W22-SAT
+  name: "Race Week Sat — Easy Shakeout"
+  type: RUN
+  date: 2026-10-17
+  distance: 3km
+  description: "Easy 3km shakeout. RPE 2. Very light. Include 2x 200m at marathon effort (RPE 6). Almost race day — stay loose."
+  steps:
+    - {type: ConcreteStep, description: "Easy jog 2.6km", comments: "RPE 2. Very light.", length: 2.6km, pace_range: {min: "6:40 /km", max: "7:10 /km"}}
+    - type: RepeatStep
+      repetitions: 2
+      description: "Repeat 2x strides"
+      comments: "200m at RPE 6. Walk 60s recovery."
+      steps:
+        - {type: ConcreteStep, description: "200m at marathon effort", comments: "RPE 6. Light.", length: 200m, pace_range: {min: "5:25 /km", max: "5:40 /km"}}
+        - {type: ConcreteStep, description: "60 sec recovery walk", comments: "Full recovery."}
+
+- id: W22-SUN
+  name: "Race Week Sun — Final Taper Run"
+  type: RUN
+  date: 2026-10-18
+  distance: 12km
+  description: "Final taper run. 12km. RPE 3. Rolling terrain. Last run before the race. Practice race-day nutrition one final time. You've done the work — trust your training."
+  steps:
+    - {type: ConcreteStep, description: "Easy long run", comments: "12km at RPE 3. Rolling hills. Electrolytes every 20 min, gel every 45 min. Last run before race day. You're ready.", length: 12km, pace_range: {min: "6:00 /km", max: "6:40 /km"}}
+
+- id: W23-TUE
+  name: "Race Week Tue — Easy Shakeout"
+  type: RUN
+  date: 2026-10-20
+  distance: 4km
+  description: "RACE WEEK. Easy 4km shakeout. RPE 2-3. Include 2x 200m strides at RPE 6. Stay loose."
+  steps:
+    - {type: ConcreteStep, description: "Easy jog 3.6km", comments: "RPE 2-3.", length: 3.6km, pace_range: {min: "6:30 /km", max: "7:00 /km"}}
+    - type: RepeatStep
+      repetitions: 2
+      description: "Repeat 2x strides"
+      comments: "200m at RPE 6. Walk 60s recovery."
+      steps:
+        - {type: ConcreteStep, description: "200m stride", comments: "Light and easy.", length: 200m, pace_range: {min: "4:30 /km", max: "5:00 /km"}}
+        - {type: ConcreteStep, description: "60 sec recovery walk", comments: "Full recovery."}
+
+- id: W23-THU
+  name: "Race Week Thu — Easy Aerobic"
+  type: RUN
+  date: 2026-10-22
+  distance: 3km
+  description: "Easy 3km. RPE 2. Very light. Day before the race — just shake the legs out."
+  steps:
+    - {type: ConcreteStep, description: "Easy shakeout", comments: "RPE 2. Very light. Day before the race.", length: 3km, pace_range: {min: "6:40 /km", max: "7:10 /km"}}
+
+- id: W23-SAT
+  name: "RACE DAY — 80km Road Race"
+  type: RUN
+  date: 2026-10-23
+  distance: 80km
+  description: "RACE DAY! 80km road race, 1648m elevation, rolling hills. Start at RPE 5-6 (marathon effort). Do NOT go out fast — the first 20km should feel easy. Nutrition: electrolytes every 20 min starting from km 5, gel every 45 min starting from 45 min. Uphill form: short stride, forward lean from ankles, drive from glutes, keep calves relaxed. You've done the work. Trust your training. Enjoy the race!"
+  steps:
+    - {type: ConcreteStep, description: "KM 0-20: Settle in", comments: "RPE 5. Hold back — this should feel easy. Find your rhythm. Electrolytes from km 5.", length: 20km, pace_range: {min: "5:30 /km", max: "5:50 /km"}}
+    - {type: ConcreteStep, description: "KM 20-40: Find your groove", comments: "RPE 5-6. Settle into marathon effort. Stay relaxed. Gel at 45 min, then every 45 min. Electrolytes every 20 min.", length: 20km, pace_range: {min: "5:25 /km", max: "5:45 /km"}}
+    - {type: ConcreteStep, description: "KM 40-60: Stay focused", comments: "RPE 6. This is where the race starts. Stay on top of nutrition. Glute-driven climbing on every uphill. Calves relaxed. You've trained for this.", length: 20km, pace_range: {min: "5:25 /km", max: "5:45 /km"}}
+    - {type: ConcreteStep, description: "KM 60-80: Strong finish", comments: "RPE 6-7. You're in the final quarter. Stay disciplined with nutrition. If you've held back well, you can push slightly in the final 10km. Dig deep — you've earned this.", length: 20km, pace_range: {min: "5:20 /km", max: "5:45 /km"}}
